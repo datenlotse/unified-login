@@ -1,4 +1,4 @@
-# THDS Unified Login GO library
+# THDS Unified Login Go library
 
 This library is ment to be used for integrating Go
 applications with THDS Unified Login
