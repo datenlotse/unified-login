@@ -15,13 +15,13 @@ applications with THDS Unified Login
 1. To install the package:
 
 ```sh
-go get github.com/datenlotse/unified-login-go
+go get github.com/datenlotse/unified-login
 ```
 
 2. Import it in your code:
 
 ```go
-import "github.com/datenlotse/unified-login-go"
+import "github.com/datenlotse/unified-login"
 ```
 
 ## Usage
