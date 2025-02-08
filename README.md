@@ -5,9 +5,10 @@ applications with THDS Unified Login
 
 <!--toc:start-->
 
-- [THDS Unified Login GO library](#thds-unified-login-go-library)
+- [THDS Unified Login Go library](#thds-unified-login-go-library)
   - [Installation](#installation)
-  - [Usage](#usage)
+  - [General Usage](#general-usage)
+  - [Syncing scopes](#syncing-scopes)
   <!--toc:end-->
 
 ## Installation
@@ -24,7 +25,7 @@ go get github.com/datenlotse/unified-login
 import "github.com/datenlotse/unified-login"
 ```
 
-## Usage
+## General Usage
 
 1. First create a instance of the middleware using `NewMiddleware(string)`
 2. Use the instance and apply the `CheckJWT(http.Handler)` middleware to your `HttpHandler`.
@@ -55,5 +56,37 @@ var handler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 func main() {
   m := unified_login.NewMiddleware("<secret>")
   http.ListenAndServe("0.0.0.0:3000", m.CheckJWT(m.MustBeAuthenticated(handler)))
+}
+```
+
+## Syncing scopes
+
+To sync your application scopes with Unified Login
+you can use the provided `SyncScopes` function
+
+```go
+package main
+
+import "github.com/datenlotse/unified-login"
+
+func main() {
+ ctx, cancel := context.WithCancel(context.Background())
+ defer cancel()
+
+ scopes := []unified_login.Scope{
+  {Scope: "scope_1", Description: "scope 1"},
+  {Scope: "scope_2", Description: "scope 2"},
+ }
+ err := unified_login.SyncScopes(
+  ctx,
+  "https://login-microservice.example.com",
+  "<client_secret>",
+  "<system_user_id>",
+  scopes,
+ )
+ if err != nil {
+  panic(err)
+ }
+ log.Println("Synced scopes")
 }
 ```
