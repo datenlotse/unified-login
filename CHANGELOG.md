@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/datenlotse/unified-login/compare/v1.0.0...v1.1.0) (2025-02-08)
+
+
+### Features
+
+* add ScopesSync function ([e4fad0e](https://github.com/datenlotse/unified-login/commit/e4fad0e42ade575332fe2499f0fd0bd116844585))
+
 ## 1.0.0 (2025-02-07)
 
 
