@@ -1,4 +1,4 @@
-module github.com/datenlotse/unified-login-go
+module github.com/datenlotse/unified-login
 
 go 1.23.5
 
