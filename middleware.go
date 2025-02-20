@@ -92,7 +92,6 @@ func (m UnifiedLoginMiddleware) CheckJWT(next http.Handler) http.Handler {
 				UserId: uuid.MustParse(userId),
 				Scopes: scopesStr,
 			}
-			fmt.Printf("User: %#v", user)
 
 			r = setUserInContext(r, user)
 		}
